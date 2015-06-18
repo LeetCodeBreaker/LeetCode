@@ -33,7 +33,7 @@ class Solution {
             int value1, value2;
             struct ListNode *preNode = NULL;
             struct ListNode *HeadNode = NULL;
-            while(l1->next == NULL && l2->next == NULL) 
+            while(!(l1->next == NULL && l2->next == NULL)) 
             {
                 if(l1->next == NULL) {
                     value1 = 0;
