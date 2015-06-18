@@ -71,9 +71,8 @@ class Solution {
                 }
                 NodeNow = NodeNow->next;
             }
-
-
-
+            
+            return HeadNode;
 
         }
 
