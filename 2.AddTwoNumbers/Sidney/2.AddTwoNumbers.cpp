@@ -54,6 +54,7 @@ class Solution {
                 else {
                     HeadNode = Node;
                 }
+                preNode = Node;
             }
 
             ListNode *NodeNow = HeadNode; 
