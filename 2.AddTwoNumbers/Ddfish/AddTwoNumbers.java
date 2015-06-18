@@ -12,53 +12,44 @@ public class AddTwoNumbers {
               break;
           }else if(a == null){
               now.val += b.val;
-               if(now.val >=10){
-                  now.val -= 10;
-                  now.next = new ListNode(1);
-                }else{
-                    if(b.next == null){
-                        break;
-                    }else{
-                        now.next = new ListNode(0);
-                        
-                    }
-                    
-                }
-              
-              
+              if(now.val < 10 && b.next != null){
+                 
+                 now.next = new ListNode(0);
+              }
+            
           }else if(b == null){
               now.val += a.val;
-               if(now.val >=10){
-                  now.val -= 10;
-                  now.next = new ListNode(1);
-                }else{
-                    if(a.next == null){
-                        break;
-                    }else{
-                        now.next = new ListNode(0);
-                    }
-                }
+               if(now.val < 10 && a.next != null){
+                
+                   now.next = new ListNode(0);
+               }
+             
           }else{
-              now.val = now.val + a.val + b.val;
-              if(now.val >=10){
+             now.val = now.val + a.val + b.val;
+              if(now.val < 10 && (a.next != null || b.next != null)){
+                
+                   now.next = new ListNode(0);
+               }
+ 
+          }
+          if(now.val >=10){
                   now.val -= 10;
                   now.next = new ListNode(1);
-             }else{
-                  if(a.next == null && b.next == null){
-                    break;
-                  }else{
-                      now.next = new ListNode(0);
-                  }
-             }
           }
+          
           now = now.next;
-          if(a != null){
+          try{
             a = a.next;
+          }catch(java.lang.NullPointerException e){
           }
-          if(b != null){
+          try{
             b = b.next;
+          }catch(java.lang.NullPointerException e){
           }
+          
         }
+        
+        
         return answer;
         
     }
