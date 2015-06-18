@@ -4,7 +4,7 @@ public class TwoSum{
         for (var i = 0 ; i < nums.count - 1 ;i++){
             for(var j = i+1 ; j < nums.count ;j++){
                 if(nums[i] + nums[j] == target){
-                    return [nums[i],nums[j]]
+                    return [i+1,j+1]
                 }
             }
         }
