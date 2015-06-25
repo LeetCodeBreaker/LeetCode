@@ -1,8 +1,8 @@
 public class Solution {
     public int myAtoi(String str) {
-    if (str == null || str.length() < 1)
+    if (str == null || str.length() < 1){
 		return 0;
- 
+    }
 	
 	str = str.trim();
  
@@ -25,16 +25,16 @@ public class Solution {
 		i++;
 	}
  
-	if (flag == '-')
+	if (flag == '-'){
 		result = -result;
- 
+	}
 
-	if (result > Integer.MAX_VALUE)
+	if (result > Integer.MAX_VALUE){
 		return Integer.MAX_VALUE;
- 
-	if (result < Integer.MIN_VALUE)
+	}
+	if (result < Integer.MIN_VALUE){
 		return Integer.MIN_VALUE;
- 
+	}
 	return (int) result;
     }
 }
