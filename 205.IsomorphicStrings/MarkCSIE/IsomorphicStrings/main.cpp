@@ -5,7 +5,7 @@
 class Solution {
 public:
 
-    bool isIsomorphic(const std::string s, const std::string t) {
+    bool isIsomorphic(const std::string &s, const std::string &t) {
         std::unordered_map<char, char> char_map1;
         std::unordered_map<char, char> char_map2;
         for (int i = 0; i < s.length(); i++) {
