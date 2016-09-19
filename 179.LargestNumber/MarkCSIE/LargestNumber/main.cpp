@@ -52,8 +52,7 @@ public:
 
 int main() {
     Solution solution;
-    std::vector<int> test = {3, 30, 34, 5, 9};
-    std::cout << solution.largestNumber(test) << std::endl;
+    std::cout << solution.largestNumber({3, 30, 34, 5, 9}) << std::endl;
     return 0;
 }
 
