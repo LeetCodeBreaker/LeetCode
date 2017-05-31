@@ -1,14 +1,12 @@
-public class TwoSum{
-    static func  twoSum(nums : [Int] , target :Int) ->[Int]{
-        
-        for (var i = 0 ; i < nums.count - 1 ;i++){
-            for(var j = i+1 ; j < nums.count ;j++){
-                if(nums[i] + nums[j] == target){
-                    return [i+1,j+1]
-                }
+class Solution {
+    func twoSum(nums: [Int], _ target: Int) -> [Int] {
+        var dic : [Int : Int] = [:]
+        for(var i = 0 ; i < nums.count ; i+=1){
+            if let answer = dic[nums[i]]{
+                return [answer,i]
             }
+            dic[target-nums[i]] = i
         }
         return []
     }
-
 }
