@@ -101,5 +101,4 @@ int main()
 {
   Solution solution;
   std::cout << solution.findPaths(36, 5, 50, 15, 3) << std::endl;
-
 }
