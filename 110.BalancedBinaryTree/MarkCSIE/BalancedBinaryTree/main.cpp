@@ -17,7 +17,7 @@ class Solution
 public:
   bool isBalanced(TreeNode* root)
   {
-    if (height(root) == -1)
+    if (height(root) == -2)
     {
       return false;
     }
@@ -31,21 +31,21 @@ protected:
   {
     if (root == nullptr)
     {
-      return 0;
+      return -1;
     }
     int left_height = height(root->left);
-    if (left_height == -1)
+    if (left_height == -2)
     {
-      return -1;
+      return -2;
     }
     int right_height = height(root->right);
-    if (right_height == -1)
+    if (right_height == -2)
     {
-      return -1;
+      return -2;
     }
     if (std::abs(left_height - right_height) > 1)
     {
-      return -1;
+      return -2;
     }
     return std::max(left_height, right_height) + 1;
   }
