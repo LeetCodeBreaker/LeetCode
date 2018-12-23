@@ -3,20 +3,23 @@
  * @return {number}
  */
 var largestRectangleArea = function(heights) {
+    const stack = [];
+    let popNumber = 0;
     let max = 0;
-    let record = heights.map(s => null);
-    let sorted = heights.map((v, i) => {return {v, i}})
-    sorted.sort((l, r) => {
-        return (r.v - l.v) || (l.i - r.i);
-    });
-
-    sorted.forEach(o => {
-        record[o.i] = {left: o.i, right: o.i};
-        const leftIndex = record[o.i - 1] ? record[o.i - 1].left : o.i;
-        const rightIndex = record[o.i + 1] ? record[o.i + 1].right : o.i;
-        record[leftIndex].right = rightIndex;
-        record[rightIndex].left = leftIndex;
-        max = Math.max(max, (rightIndex - leftIndex + 1) * o.v);
-    });
+    
+    for (let i = 0; i < heights.length; i++) {
+        while (stack.length > 0 && heights[i] < stack[stack.length - 1].v) {
+            const record = stack.pop();
+            popNumber += record.p;
+            max = Math.max(max, record.v * popNumber);
+        }
+        stack.push({v: heights[i], p: popNumber + 1});
+        popNumber = 0;
+    }
+    while (stack.length > 0) {
+        const record = stack.pop();
+        popNumber += record.p;
+        max = Math.max(max, record.v * popNumber);
+    }
     return max;
 };
