@@ -12,15 +12,24 @@
  */
 var connect = function(root) {
     if (!root) return;
-    let q = [root];
-    let nq = [];
-    while (q.length > 0) {
-        for (let i = 0; i < q.length; i++) {
-            q[i].next = q[i + 1] || null;
-            if (q[i].left) nq.push(q[i].left);
-            if (q[i].right) nq.push(q[i].right);
+    root.next = null;
+    let parent = root;
+    let first = root.left || root.right
+    while (first) {
+        let curr = first;
+        let next = null;
+        let nextFirst = curr.left || curr.right;
+        while (parent) {
+            next = curr === parent.left ? parent.right : (parent.left || parent.right);
+            if (!next) parent = parent.next;
+            else {
+                curr.next = next;
+                curr = next;
+                if (next === parent.right) parent = parent.next;
+                if (!nextFirst) nextFirst = curr.left || curr.right;
+            }
         }
-        q = nq;
-        nq = [];
+        parent = first;
+        first = nextFirst;
     }
 };
